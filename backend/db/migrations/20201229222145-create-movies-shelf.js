@@ -8,7 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id: {
+      shelfId: {
+        type: Sequelize.INTEGER
+      },
+      movieId: {
         type: Sequelize.INTEGER
       },
       createdAt: {

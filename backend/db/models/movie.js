@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     synopsis: DataTypes.TEXT,
     actors: DataTypes.STRING,
+    director: DataTypes.STRING,
     status: DataTypes.ENUM
   }, {});
   Movie.associate = function(models) {

@@ -1,18 +1,27 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Shelves', {
+    return queryInterface.createTable('Movies', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.ENUM
+      title: {
+        type: Sequelize.STRING
       },
-      review: {
+      synopsis: {
         type: Sequelize.TEXT
+      },
+      actors: {
+        type: Sequelize.STRING
+      },
+      director: {
+        type: Sequelize.STRING
+      },
+      status: {
+        type: Sequelize.ENUM
       },
       createdAt: {
         allowNull: false,
@@ -25,6 +34,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Shelves');
+    return queryInterface.dropTable('Movies');
   }
 };
