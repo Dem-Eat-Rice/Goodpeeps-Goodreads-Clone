@@ -9,8 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        allowNull: false,
-        type: Sequelize.ENUM
+        type: Sequelize.ENUM('Want to watch', 'Have watched', 'Watching Tonight')
       },
       review: {
         allowNull: false,
@@ -19,12 +18,12 @@ module.exports = {
       userId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: User }
+        references: { model: Users }
       },
       movieId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: Movie }
+        references: { model: Movies }
       },
       createdAt: {
         allowNull: false,

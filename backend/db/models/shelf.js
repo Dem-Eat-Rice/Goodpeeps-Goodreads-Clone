@@ -1,7 +1,9 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Shelf = sequelize.define('Shelf', {
-    name: DataTypes.ENUM,
+    name: {
+      type: DataTypes.ENUM('Want to watch', 'Have watched', 'Watching Tonight')
+    },
     review: DataTypes.TEXT,
     userId: DataTypes.INTEGER,
     movieId: DataTypes.INTEGER

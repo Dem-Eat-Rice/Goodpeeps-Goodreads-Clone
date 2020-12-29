@@ -9,15 +9,19 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       synopsis: {
+        allowNull: false,
         type: Sequelize.TEXT
       },
       actors: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       director: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       status: {
