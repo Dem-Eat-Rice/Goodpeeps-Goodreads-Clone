@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Shelf.associate = function(models) {
     // associations can be defined here
+    Shelf.belongsTo(models.User, { foreignKey: 'userId' })   
   };
   return Shelf;
 };
