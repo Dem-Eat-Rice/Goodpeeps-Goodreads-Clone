@@ -16,11 +16,13 @@ module.exports = {
       },
       shelfId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: 'Shelves' }
       },
       movieId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        refernces: { model: 'Movies' }
       },
       createdAt: {
         allowNull: false,

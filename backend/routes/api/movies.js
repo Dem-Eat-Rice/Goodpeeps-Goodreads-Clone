@@ -1,11 +1,16 @@
 const express = require('express');
-const db = require('../../db')
+const asyncHandler = require('express-async-handler');
+const { Movie } = require('../../db/models');
+
+
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-    const movies = await db.Mov.findAll();
-    console.log(movies)
+router.get('/', asyncHandler(async (req, res) => {
+    const movies = await Movie.findAll();
     return res.json(movies);
-})
+}));
+
+
+
 
 module.exports = router;

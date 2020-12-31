@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   MoviesShelf.associate = function(models) {
     // associations can be defined here
-    MoviesShelf.hasMany(models.Movie, { foreignKey: 'movieId' });
-    MoviesShelf.hasMany(models.Shelf, { foreignKey: 'shelfId' });
+    MoviesShelf.belongsTo(models.Movie, { foreignKey: 'movieId' });
+    MoviesShelf.belongsTo(models.Shelf, { foreignKey: 'shelfId' });
   };
   return MoviesShelf;
 };
