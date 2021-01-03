@@ -21,16 +21,26 @@ router.get('/', requireAuth, asyncHandler(async (req, res) => {
 
 router.get('/:name', requireAuth, asyncHandler(async (req, res) => {
 
-    paramsStatusComparison = paramsConversion(req.params)
+    paramsStatusComparison = paramsConversion(req.params);
 
     const myMovies = await MoviesShelf.findAll({
         include: [Shelf, Movie],
         where: {
-            status: paramsStatusComparison
+            status: paramsStatusComparison,
         }
     });
 
-    return res.json(myMovies);
+    //I'm positive there was a better way to do this whole thing, however brain is now potato. Like 1845-1849 potato. Refactor later after studying frontend.
+    for (i = 0; i < myMovies.length; i++) {
+        const shelfTable = myMovies[i].Shelf;
+        const userId = shelfTable.userId;
+        const currentUser = req.user;
+        const currentUserId = currentUser.id;
+
+        if (userId === currentUserId) {
+            return res.json(myMovies[i]);
+        }
+    }
 }));
 
 
