@@ -22,7 +22,7 @@ module.exports = {
       movieId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        refernces: { model: 'Movies' }
+        references: { model: 'Movies' }
       },
       createdAt: {
         allowNull: false,
