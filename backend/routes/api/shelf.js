@@ -37,10 +37,9 @@ router.get('/:name', requireAuth, asyncHandler(async (req, res) => {
 //functions
 
 function paramsConversion(nonConvertedParams) {
-    //assuming params will be in this format: abc-def
+
     nonConvertedParams = nonConvertedParams.name;
     const paramsWordArray = nonConvertedParams.split('-');
-    //this variable looks like [abc, def]
     const capitalizedFirstLetterOfParamsWordArray = paramsWordArray.map(word => {
         word = [...word];
         capitalizedLetter = word[0].toUpperCase();
@@ -49,11 +48,9 @@ function paramsConversion(nonConvertedParams) {
         let capitalizedWordArray = word.join('');
 
         return capitalizedWordArray;
-
     })
 
     const convertedParams = capitalizedFirstLetterOfParamsWordArray.join(' ');
-    //finally we get [Abc Def]
 
     return convertedParams;
 };
