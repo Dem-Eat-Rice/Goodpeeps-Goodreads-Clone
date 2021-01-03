@@ -11,7 +11,7 @@ module.exports = {
       { name: 'Watching Tonight', userId: 2 },
     ],
       {
-        // returning: true
+        returning: true
       });
   },
 

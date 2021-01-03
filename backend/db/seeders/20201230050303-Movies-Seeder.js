@@ -37,9 +37,8 @@ module.exports = {
       }
     ],
       {
-        // returning: true
+        returning: true
       })
-    console.log(movies)
   },
 
   down: async (queryInterface, Sequelize) => {
