@@ -14,12 +14,12 @@ module.exports = {
         movieId: 2,
       },
       {
-        status: 'Want to Watch',
+        status: 'Want To Watch',
         shelfId: 3,
         movieId: 3,
       },
       {
-        status: 'Want to Watch',
+        status: 'Want To Watch',
         shelfId: 4,
         movieId: 4,
       }
@@ -30,7 +30,7 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('MoviesShelves')
+    await queryInterface.bulkDelete('MoviesShelves');
     /*
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.

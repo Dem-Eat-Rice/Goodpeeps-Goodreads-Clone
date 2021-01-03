@@ -29,32 +29,31 @@ router.get('/:name', requireAuth, asyncHandler(async (req, res) => {
             status: paramsStatusComparison
         }
     });
-    
+
     return res.json(myMovies);
 }));
 
-// router.post('/', requireAuth, asyncHandler(async (req, res) => {
 
-// }));
+//functions
 
 function paramsConversion(nonConvertedParams) {
-    
+    //assuming params will be in this format: abc-def
     nonConvertedParams = nonConvertedParams.name;
-    const paramsArray = nonConvertedParams.split('-');
-
-    const capitalizedFirstLetterOfParamsArray = paramsArray.map(word => {
+    const paramsWordArray = nonConvertedParams.split('-');
+    //this variable looks like [abc, def]
+    const capitalizedFirstLetterOfParamsWordArray = paramsWordArray.map(word => {
         word = [...word];
         capitalizedLetter = word[0].toUpperCase();
         word.splice(0, 1, capitalizedLetter);
-        for (i = 0; i < word.length; i++) {
-            let capitalizedWordArray = word.join('');
-            return capitalizedWordArray;
-        };
 
-        return word;
+        let capitalizedWordArray = word.join('');
+
+        return capitalizedWordArray;
+
     })
 
-    const convertedParams = capitalizedFirstLetterOfParamsArray.join(' ');
+    const convertedParams = capitalizedFirstLetterOfParamsWordArray.join(' ');
+    //finally we get [Abc Def]
 
     return convertedParams;
 };
