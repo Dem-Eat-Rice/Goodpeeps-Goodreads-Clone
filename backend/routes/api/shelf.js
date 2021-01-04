@@ -1,7 +1,5 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { values } = require('sequelize/types/lib/operators');
-const { MoviesShelf, Shelf, Movie, User } = require('../../db/models')
 const { requireAuth } = require('../../utils/auth');
 
 const router = express.Router();
@@ -38,25 +36,10 @@ router.get('/:name', requireAuth, asyncHandler(async (req, res) => {
 }));
 
 router.post('/', requireAuth, asyncHandler(async (req, res) => {
-
-    const status = req.status;
-    const review = req.review;
-    const shelfID = req.shelfId;
-    const movieId = req.movieId;
-    const createdAt = req.createdAt;
-    const updatedAt = req.updatedAt;
-    const movieOnShelf = await MoviesShelf.create({
-        status,
-        review,
-        shelfId,
-        movieId,
-        createdAt,
-        updatedAt,
-    });
+    
+    const movieOnShelf = await MoviesShelf.create(req.body);
     return res.redirect(`${req.baseUrl}${req.path}`);
 }))
-
-
 
 
 
