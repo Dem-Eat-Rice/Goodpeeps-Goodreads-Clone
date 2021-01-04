@@ -1,17 +1,19 @@
-import {useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getMovieToAddToShelf } from '../../store/shelf';
+import { useHistory } from 'react-router-dom';
 
-const AddMovieToShelf = () => {
+const MovieOnShelf = () => {
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const [status, setStatus] = useState('Want To Watch');
     const [review, setReview] = useState('');
     const [shelfId, setShelfId] = useState('');
     const [movieId, setMovieId] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.prevent.default(); 
         
         let review = e.currentTarget[1].value;
@@ -23,6 +25,11 @@ const AddMovieToShelf = () => {
             movieId,
             
         }
+      const movie = await dispatch(AddToShelf(payload));
+      if(movie) {
+        history.push(`/movies/${movie.movieId}`)
+      }
+
     }
     
 
@@ -45,4 +52,4 @@ const AddMovieToShelf = () => {
     );
 }
 
-export default AddMovieToShelf;
+export default MovieOnShelf;

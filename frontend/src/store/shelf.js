@@ -1,5 +1,5 @@
 
-export const getMovieToAddToShelf = data => async dispatch => {
+export const AddToShelf = data => async dispatch => {
     const response = await fetch(`/api/shelves`, {
         method: 'post',
         headers: {
@@ -11,9 +11,36 @@ export const getMovieToAddToShelf = data => async dispatch => {
     if (response.ok) {
         const moviesOnShelf = await response.json();
         dispatch({
-            type: 'ADD_ONE',
+            type: 'movies/ADD_ONE',
             moviesOnShelf,
-        })        
+        })
         return moviesOnShelf;
     }
 }
+
+export const getShelfMovies = () => async dispatch => {
+    const response = await fetch(`/api/shelves`);
+
+    if (response.ok) {
+        const list = await response.json();
+        dispatch({
+            type: 'shelf/LOAD',
+            list,
+        });
+    }
+};
+
+export const getMoviesInSingleShelf = shelf => async dispatch => {
+    const response = await fetch(`/api/shelves/${shelf.name}`);
+
+    if (response.ok) {
+        const moviesInSingleShelf = await response.json();
+        dispatch({
+            type: 'shelf/LOAD_SHELF',
+            moviesInSingleShelf,
+        });
+    }
+};
+
+
+module.exports = { getMoviesInSingleShelf, getShelfMovies, AddToShelf }
