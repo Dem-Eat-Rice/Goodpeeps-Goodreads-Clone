@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/', requireAuth, asyncHandler(async (req, res) => {
     const user = req.user.toJSON();
-
+    
     const shelf = await Shelf.findAll({
         where: {
             userId: user.id
@@ -20,31 +20,43 @@ router.get('/', requireAuth, asyncHandler(async (req, res) => {
 }))
 
 router.get('/:name', requireAuth, asyncHandler(async (req, res) => {
-
+    
     paramsStatusComparison = paramsConversion(req.params);
-
+    
     const myMovies = await MoviesShelf.findAll({
         include: [Shelf, Movie],
         where: {
             status: paramsStatusComparison,
         }
     });
-
-    //I'm positive there was a better way to do this whole thing, however brain is now potato. Like 1845-1849 potato. Refactor later after studying frontend.
+    
+    //I'm positive there was a better way to do this whole thing, however brain is potato. Like potato in 1845. Refactor later after finding out more.
     for (i = 0; i < myMovies.length; i++) {
-        const shelfTable = myMovies[i].Shelf;
-        const userId = shelfTable.userId;
-        const currentUser = req.user;
-        const currentUserId = currentUser.id;
-
-        if (userId === currentUserId) {
+        const { Shelf } = myMovies[i];    
+        const { id } = req.user;
+        
+        if (Shelf.userId === id) {
             return res.json(myMovies[i]);
         }
     }
 }));
 
+router.post('/', requireAuth, asyncHandler(async (req, res) => {
+const movie = await MoviesShelf.create({
+    status,
+    review,
+    shelfId,
+    movieId,
+    createdAt,
+    updatedAt,
+});
+    return res.redirect(`${req.baseUrl}${req.path}`);
+}))
 
-//functions
+router.put('/')
+
+
+
 
 function paramsConversion(nonConvertedParams) {
 

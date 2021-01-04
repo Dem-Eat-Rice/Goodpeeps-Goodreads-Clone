@@ -9,7 +9,7 @@ module.exports = {
         movieId: 1,
       },
       {
-        status: 'Have Watched',
+        status: 'Watched',
         shelfId: 2,
         movieId: 2,
       },
