@@ -21,5 +21,3 @@ export const getOneMovie = (movie) => async dispatch => {
         });
     }
 };
-
-module.exports = { getAllMovies, getOneMovie }

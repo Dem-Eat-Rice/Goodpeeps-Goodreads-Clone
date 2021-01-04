@@ -1,5 +1,5 @@
 
-export const AddToShelf = data => async dispatch => {
+export const addToShelf = data => async dispatch => {
     const response = await fetch(`/api/shelves`, {
         method: 'post',
         headers: {
@@ -43,4 +43,4 @@ export const getMoviesInSingleShelf = shelf => async dispatch => {
 };
 
 
-module.exports = { getMoviesInSingleShelf, getShelfMovies, AddToShelf }
+

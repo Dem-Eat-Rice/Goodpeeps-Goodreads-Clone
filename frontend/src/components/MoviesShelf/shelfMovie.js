@@ -1,19 +1,26 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { getMovieToAddToShelf } from '../../store/shelf';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { addToShelf } from '../../store/shelf';
+import { getAllMovies } from '../../store/movie';
 
-const MovieOnShelf = () => {
+const MoviesOnShelf = () => {
+  
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const movies = useSelector(state => {
+    return state.movies.list.map(movieId => state.movies[movieId]);
+  });
+  
+  const [status, setStatus] = useState('Want To Watch');
+  const [review, setReview] = useState('');
+  
+  
+  useEffect(() => {
+    dispatch(getAllMovies());
+  }, [dispatch]);
 
-    const dispatch = useDispatch();
-    const history = useHistory();
-
-    const [status, setStatus] = useState('Want To Watch');
-    const [review, setReview] = useState('');
-    const [shelfId, setShelfId] = useState('');
-    const [movieId, setMovieId] = useState('');
-
-    const handleSubmit = async(e) => {
+  const handleSubmit = async(e) => {
         e.prevent.default(); 
         
         let review = e.currentTarget[1].value;
@@ -21,11 +28,10 @@ const MovieOnShelf = () => {
         const payload = {
             status,
             review,
-            shelfId,
-            movieId,
             
         }
-      const movie = await dispatch(AddToShelf(payload));
+        
+      const movie = await dispatch(addToShelf(payload));
       if(movie) {
         history.push(`/movies/${movie.movieId}`)
       }
@@ -44,7 +50,9 @@ const MovieOnShelf = () => {
           </label>
           <div>
             <label>Review:</label>
-            <input type="text" value={review} onChange={e => setReview(e.target.value)} />
+          </div>
+          <div>
+            <textarea value={review} onChange={e => setReview(e.target.value)} />
           </div>
           <input type="submit" value="Submit" />
          
@@ -52,4 +60,4 @@ const MovieOnShelf = () => {
     );
 }
 
-export default MovieOnShelf;
+export default MoviesOnShelf;
