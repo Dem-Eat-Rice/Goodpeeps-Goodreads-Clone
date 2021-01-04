@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 router.get('/', requireAuth, asyncHandler(async (req, res) => {
-    const user = req.user.toJSON();
+    const user = req.user;
    
 
     const shelf = await Shelf.findAll({
@@ -22,7 +22,6 @@ router.get('/', requireAuth, asyncHandler(async (req, res) => {
 router.get('/:name', requireAuth, asyncHandler(async (req, res) => {
 
     paramsStatusComparison = paramsConversion(req.params);
-    console.log(req.user);
 
     const myMovies = await MoviesShelf.findAll({
         include: [Shelf, Movie],
@@ -37,7 +36,7 @@ router.get('/:name', requireAuth, asyncHandler(async (req, res) => {
 
 router.post('/', requireAuth, asyncHandler(async (req, res) => {
     
-    const movieOnShelf = await MoviesShelf.create(req.body);
+    await MoviesShelf.create(req.body);
     return res.redirect(`${req.baseUrl}${req.path}`);
 }))
 
