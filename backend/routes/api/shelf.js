@@ -1,5 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
+const { values } = require('sequelize/types/lib/operators');
 const { MoviesShelf, Shelf, Movie, User } = require('../../db/models')
 const { requireAuth } = require('../../utils/auth');
 
@@ -8,6 +9,7 @@ const router = express.Router();
 
 router.get('/', requireAuth, asyncHandler(async (req, res) => {
     const user = req.user.toJSON();
+   
 
     const shelf = await Shelf.findAll({
         where: {
@@ -22,27 +24,27 @@ router.get('/', requireAuth, asyncHandler(async (req, res) => {
 router.get('/:name', requireAuth, asyncHandler(async (req, res) => {
 
     paramsStatusComparison = paramsConversion(req.params);
+    console.log(req.user);
 
     const myMovies = await MoviesShelf.findAll({
         include: [Shelf, Movie],
         where: {
             status: paramsStatusComparison,
+            userId: req.user.id,
         }
     });
 
-    //I'm positive there was a better way to do this whole thing, however brain is potato. Like potato in 1845. Refactor later after finding out more.
-    for (i = 0; i < myMovies.length; i++) {
-        const { Shelf } = myMovies[i];
-        const { id } = req.user;
-
-        if (Shelf.userId === id) {
-            return res.json(myMovies[i]);
-        }
-    }
+    return res.json(myMovies);   
 }));
 
 router.post('/', requireAuth, asyncHandler(async (req, res) => {
 
+    const status = req.status;
+    const review = req.review;
+    const shelfID = req.shelfId;
+    const movieId = req.movieId;
+    const createdAt = req.createdAt;
+    const updatedAt = req.updatedAt;
     const movieOnShelf = await MoviesShelf.create({
         status,
         review,
@@ -53,6 +55,7 @@ router.post('/', requireAuth, asyncHandler(async (req, res) => {
     });
     return res.redirect(`${req.baseUrl}${req.path}`);
 }))
+
 
 
 
@@ -77,5 +80,5 @@ function paramsConversion(nonConvertedParams) {
 
     return convertedParams;
 };
-
+    
 module.exports = router;
