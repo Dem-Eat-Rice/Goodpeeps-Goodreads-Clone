@@ -100,10 +100,10 @@ ul > form {
   margin: 0px;
   padding: 0px 0px 0px 6px;
   width: 400px;
-  height: 32px;
+  height: 30px;
   border: solid;
+  border-top: none;
   border-right: none;
-  border-top: 1px;
   border-color: gray;
   border-radius: 0px;
   border-width: 2px;
@@ -119,9 +119,10 @@ ul > form {
   border: solid;
   border-top: none;
   border-left: none;
+  border-bottom: solid;
   border-color: gray;
-  border-width: 1px;
-  height: 33px;
+  border-width:2px;
+  height: 30px;
   outline-style: none;
 } 
 
