@@ -1,9 +1,8 @@
-import { get } from 'js-cookie';
 import { fetch } from './csrf';
 
 const GET_SHELVED_MOVIES = 'shelvedMovies/getShelvedMovies';
-const ADD_SHELVED_MOVIE = 'shelvedMovies/addShelvedMovie';
-const DELETE_SHELVED_MOVIE = 'shelvedMovies/deleteShelvedMovie';
+// const ADD_SHELVED_MOVIE = 'shelvedMovies/addShelvedMovie';
+// const DELETE_SHELVED_MOVIE = 'shelvedMovies/deleteShelvedMovie';
 
 const getShelvedMovies = (shelvedMovies) => {
     return {

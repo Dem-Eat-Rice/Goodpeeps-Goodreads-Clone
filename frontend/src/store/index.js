@@ -1,13 +1,13 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session';
-import shelf from './shelf';
 import movieReducer from './movie';
 import shelvedMovieReducer from './shelf';
 
 const rootReducer = combineReducers({
   session,
   movies: movieReducer,
+  shelfMovies: shelvedMovieReducer,
 });
 
 let enhancer;
