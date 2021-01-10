@@ -20,35 +20,36 @@ function LoginForm() {
   };
 
   return (
-    <>
-      <h1>Log In</h1>
+
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
-          Username or Email
+        <div className="login-box">
           <input
             type="text"
+            placeholder="Email address"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
           />
-        </label>
-        <label>
-          Password
           <input
             type="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </label>
-        <button type="submit">Log In</button>
+          <button id="fix" type="submit">Sign in</button>
+        </div>
+        <div id="checkbox" >
+          <input id="special" type="checkbox"/>
+        </div>
+          <span>Remember me</span>
       </form>
-    </>
+    
   );
 }
 
