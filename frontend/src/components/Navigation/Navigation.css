@@ -100,11 +100,12 @@ ul > form {
   margin: 0px;
   padding: 0px 0px 0px 6px;
   width: 400px;
-  height: 30px;
+  height: 32px;
   border: solid;
   border-right: none;
+  border-top: 1px;
   border-color: gray;
-  border-radius: 1px;
+  border-radius: 0px;
   border-width: 2px;
   font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
   
@@ -116,17 +117,17 @@ ul > form {
 
 #glass {
   border: solid;
+  border-top: none;
   border-left: none;
   border-color: gray;
-  border-width: 2px;
-  height: 30px;
+  border-width: 1px;
+  height: 33px;
   outline-style: none;
 } 
 
 img {
   margin-top: 0px;
   height: 35px;
-  /* position: absolute; */
 }
 
 
