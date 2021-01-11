@@ -4,10 +4,12 @@
 
 html {
   /* background-color: rgb(235, 233, 224); */
-  background-image: url("../../images/pngtree-black-starry-background-picture-png-image_395878.jpg");
-  /* background-position: bottom 100%; */
-  /* background-color: black; */
-}
+  background: linear-gradient(0deg, rgb(235, 233, 224), black 85%);
+  /* background-image: url("../../images/pngtree-black-starry-background-picture-png-image_395878.jpg");
+  background-position: right; */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+} 
 
 #root {
   /* background-image: url("../../images/goodpeeps_background.png"); */
@@ -34,6 +36,7 @@ div > ul {
 ul {
   margin: 0px;
   margin-bottom: 0px;
+  padding: 0px;
 }
 
 ul > form {
@@ -163,4 +166,8 @@ hr {
 
 #profile-button {
   padding-top: 10px;
+}
+
+a {
+  color: rgb(134, 95, 83)
 }
