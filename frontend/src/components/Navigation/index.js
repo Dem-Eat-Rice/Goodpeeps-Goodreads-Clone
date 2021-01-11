@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginForm from '../LoginFormPage/LoginForm';
-import './Navigation.css';
 import logo from "../../images/goodpeeps.png"
 import magnifyingGlass from "../../my.png"
+import './Navigation.css';
 
 function Navigation({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
@@ -22,7 +22,7 @@ function Navigation({ isLoaded }){
         </div>
         <div class="searchBar">
           <input className="search" type="text" placeholder="Search movies" />
-        <NavLink to="/nowhere">
+        <NavLink to="/search">
           <img id="glass" src={magnifyingGlass}/>
         </NavLink>
         </div>

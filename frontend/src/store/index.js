@@ -6,7 +6,7 @@ import shelvedMovieReducer from './shelf';
 
 const rootReducer = combineReducers({
   session,
-  movies: movieReducer,
+  movies: movieReducer,   //would I make multiple reducers from one file. Right now I'm thinking, the data I want to access
   shelfMovies: shelvedMovieReducer,
 });
 
