@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginForm from '../LoginFormPage/LoginForm';
 import './Navigation.css';
-import logo from "../../goodpeeps.png"
+import logo from "../../images/goodpeeps.png"
 import magnifyingGlass from "../../my.png"
 
 function Navigation({ isLoaded }){
@@ -19,12 +19,14 @@ function Navigation({ isLoaded }){
         <NavLink exact to="/">Browse</NavLink>
         <NavLink exact to="/">Community</NavLink>
         <div class="searchBar">
-        <input className="search" type="text" placeholder="Search movies" />
+          <input className="search" type="text" placeholder="Search movies" />
         <NavLink to="/nowhere">
           <img id="glass" src={magnifyingGlass}/>
         </NavLink>
         </div>
-        <ProfileButton user={sessionUser} />
+        <div id="profile-button">
+          <ProfileButton user={sessionUser} />
+        </div>
       </>
       
     );
@@ -45,7 +47,7 @@ function Navigation({ isLoaded }){
         </NavLink>
         {isLoaded && sessionLinks}
       </ul>
-      <hr></hr>
+        <hr></hr>
     </>
   );
 }
