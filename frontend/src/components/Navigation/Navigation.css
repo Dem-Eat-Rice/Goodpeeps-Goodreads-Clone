@@ -4,7 +4,7 @@
 
 html {
   /* background-color: rgb(235, 233, 224); */
-  background: linear-gradient(0deg, rgb(224, 215, 176), black 85%);
+  background: linear-gradient(0deg, rgb(243, 234, 197), black 85%);
   /* background-image: url("../../images/pngtree-black-starry-background-picture-png-image_395878.jpg");
   background-position: right; */
   background-repeat: no-repeat;
@@ -151,8 +151,8 @@ ul > form {
 
 img {
   /* padding-top: 5px; */
-  height: 45px;
-  width: 225px
+  height: 40px;
+  width: 200px
 }
 
 
@@ -165,7 +165,8 @@ img {
 }
 
 hr {
-  margin: 0px;
+  margin-left: -50%;
+  width: 200%;
   margin-top: 5px;
   border-width: 1px;
   color: rgb(255, 255, 221)
