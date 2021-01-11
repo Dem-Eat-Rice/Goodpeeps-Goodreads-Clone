@@ -14,10 +14,12 @@ function Navigation({ isLoaded }){
   if (sessionUser) {
     sessionLinks = (
       <>
-        <NavLink exact to="/">Home</NavLink>
-        <NavLink exact to="/shelves">My Movies</NavLink>
-        <NavLink exact to="/">Browse</NavLink>
-        <NavLink exact to="/">Community</NavLink>
+        <div className="nav-bar">
+          <NavLink exact to="/">Home</NavLink>
+          <NavLink exact to="/shelves">My Movies</NavLink>
+          <NavLink exact to="/">Browse</NavLink>
+          <NavLink exact to="/">Community</NavLink>
+        </div>
         <div class="searchBar">
           <input className="search" type="text" placeholder="Search movies" />
         <NavLink to="/nowhere">

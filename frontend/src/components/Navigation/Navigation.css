@@ -20,6 +20,13 @@ html {
   width: auto;
 }
 
+.nav-bar {
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+}
+
 a:hover {
   background-color: rgb(235, 233, 224);
 }
