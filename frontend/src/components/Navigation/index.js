@@ -17,7 +17,7 @@ function Navigation({ isLoaded }){
         <div className="nav-bar">
           <NavLink exact to="/">Home</NavLink>
           <NavLink exact to="/shelves">My Movies</NavLink>
-          <NavLink exact to="/">Browse</NavLink>
+          <NavLink exact to="/movies">Browse</NavLink>
           <NavLink exact to="/">Community</NavLink>
         </div>
         <div class="searchBar">

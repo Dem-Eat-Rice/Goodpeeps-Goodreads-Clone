@@ -1,13 +1,13 @@
 import { fetch } from './csrf';
 
-const GET_SHELVED_MOVIES = 'shelvedMovies/getShelvedMovies';
+const GET_ALL_SHELVED_MOVIES = 'shelvedMovies/getAllShelvedMovies';
 // const ADD_SHELVED_MOVIE = 'shelvedMovies/addShelvedMovie';
 // const DELETE_SHELVED_MOVIE = 'shelvedMovies/deleteShelvedMovie';
 
-const getShelvedMovies = (shelvedMovies) => {
+const getAllShelvedMovies = (shelvedMovies) => {
     return {
-        type: GET_SHELVED_MOVIES,
-        shelvedMovies,
+        type: GET_ALL_SHELVED_MOVIES,
+        shelvedMovies: shelvedMovies,
     }
 }
 
@@ -25,12 +25,12 @@ const getShelvedMovies = (shelvedMovies) => {
 //     }
 // }
 
-export const getAllShelvedMovies = () => async dispatch => {
+export const getAllShelves = () => async dispatch => {
     const response = await fetch(`/api/shelves`);
     
     if (response.ok) {
-        const list = await response.json();
-        dispatch(getShelvedMovies(list.data.shelvedMovies));
+        const listOfShelves = await response.json();
+        dispatch(getAllShelvedMovies(listOfShelves.data.shelvedMovies));
     }
 };
 
@@ -54,7 +54,7 @@ const initialState = [];
 function reducer(state = initialState, action) {
     let newState;
     switch (action.type) {
-        case GET_SHELVED_MOVIES:
+        case GET_ALL_SHELVED_MOVIES:
             newState = action.shelvedMovies;
             return newState;           
         default:
