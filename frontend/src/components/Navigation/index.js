@@ -23,7 +23,7 @@ function Navigation({ isLoaded }){
         <div class="searchBar">
           <input className="search" type="text" placeholder="Search movies" />
         <NavLink to="/search">
-          <img id="glass" src={magnifyingGlass}/>
+          <img id="glass" alt='' src={magnifyingGlass}/>
         </NavLink>
         </div>
         <div id="profile-button">
@@ -45,7 +45,7 @@ function Navigation({ isLoaded }){
     <>
       <ul>
         <NavLink exact to="/">
-          <img src={logo}/>
+          <img alt='' src={logo}/>
         </NavLink>
         {isLoaded && sessionLinks}
       </ul>

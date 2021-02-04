@@ -18,12 +18,22 @@ const MoviesPage = () => {
     }, [movies])
 
     return (
-        <div className="pot">
-            {allMovies.map(movie => {
-                return (
-                    <h1>{movie.title}</h1>
-                )
-            })}
+        <div className="content-container">
+            <div className="pot">
+                {allMovies.map(movie => {
+                    return (
+                        <>
+                            <h1>{movie.title}</h1>
+                                <h2>
+                                    <p>Starring: {movie.actors}</p>
+                                </h2>
+                                
+                            <h3>Directed by:{movie.director}</h3>
+                            <p>Synopsis: {movie.description}</p>
+                        </>
+                    )
+                })}
+            </div>
         </div>
     )
 }
